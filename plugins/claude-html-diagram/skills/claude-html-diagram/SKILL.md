@@ -1,10 +1,10 @@
 ---
-name: html-diagram-v2
+name: claude-html-diagram
 description: Create a self-contained HTML file visualizing architecture with a full-screen interactive SVG diagram. Token-efficient: one template, no gallery.
 disable-model-invocation: true
 ---
 
-# HTML Diagram (v2 — token-efficient)
+# HTML Diagram (token-efficient)
 
 Build a self-contained HTML file whose only job is to make a system's architecture
 click fast: a full-screen SVG diagram, light on prose. Iterate on the diagram

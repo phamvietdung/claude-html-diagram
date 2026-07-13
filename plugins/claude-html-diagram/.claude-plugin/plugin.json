@@ -1,5 +1,5 @@
 {
-  "name": "html-diagram-v2",
+  "name": "claude-html-diagram",
   "description": "Create a self-contained HTML file visualizing architecture with a full-screen interactive SVG diagram. Token-efficient variant — one template, no gallery.",
   "version": "1.0.0",
   "author": {
