@@ -22,20 +22,20 @@ This repo ships two variants from the same code — they differ only in the logo
 
 ```
 /plugin marketplace add phamvietdung/claude-html-diagram
-/plugin install html-diagram-v2@html-diagram
+/plugin install claude-html-diagram@claude-html-diagram
 ```
 
 **Creative Force branded (`cf` branch):**
 
 ```
 /plugin marketplace add phamvietdung/claude-html-diagram@cf
-/plugin install html-diagram-v2@html-diagram
+/plugin install claude-html-diagram@claude-html-diagram
 ```
 
-> Both variants share the same marketplace name (`html-diagram`) and plugin name
-> (`html-diagram-v2`) — add **one** of the two, not both, since they collide on
-> name. To switch variants, remove the marketplace first:
-> `/plugin marketplace remove html-diagram`, then add the other branch.
+> Both variants share the same marketplace name (`claude-html-diagram`) and plugin
+> name (`claude-html-diagram`) — add **one** of the two, not both, since they
+> collide on name. To switch variants, remove the marketplace first:
+> `/plugin marketplace remove claude-html-diagram`, then add the other branch.
 
 ## Usage
 
@@ -52,5 +52,5 @@ Works on both Windows (PowerShell) and macOS/Linux (bash).
 ## Maintainer note
 
 `master` and `cf` differ by exactly one file:
-`plugins/html-diagram-v2/skills/html-diagram-v2/references/logo.svg`.
+`plugins/claude-html-diagram/skills/claude-html-diagram/references/logo.svg`.
 Apply every other change to both branches to keep them in sync.
