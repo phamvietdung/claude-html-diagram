@@ -1,0 +1,157 @@
+/* ============================================================
+   cf-style.css — Creative Force brand, the single design system for
+   this skill. Values map from the CF Design System (colors_and_type.css).
+   Brand rules applied: navy #1B1A3D (never pure black), blue #3E82FB
+   primary accent, rectangular 4px buttons with uppercase labels and
+   no letter-spacing, Inter for UI, Petrona for the editorial title.
+
+   Fonts: declared by family name only — no @font-face, no bundled files.
+   Inter / Petrona render when present on the viewer's system; otherwise
+   the fallback stacks below take over.
+   ============================================================ */
+
+:root {
+  /* surfaces */
+  --bg: #FFFFFF; --surface: #FFFFFF; --surface2: #F6F6F6;
+  /* text: navy fg-1 / grey fg-2 / light fg-3 */
+  --ink: #1B1A3D; --body: #606770; --muted: #9A9DA8;
+  /* hairlines */
+  --line: #E2E2E2; --line-soft: #EFEFEF;
+  /* accent → CF blue (primary action) */
+  --clay: #3E82FB; --clay-soft: rgba(62,130,251,0.10);
+  /* secondary node fill → soft CF blue (#3e82fb ~16%), border uses --clay */
+  --olive: #3E82FB; --olive-soft: rgba(62,130,251,0.16);
+  /* extra hues → CF green / info blue */
+  --gold: #7BBA36; --blue: #6997DE;
+  /* diagram zones */
+  --zone: rgba(27,26,61,0.025); --zone-line: #E2E2E2;
+  /* CF signature product shadow */
+  --shadow-card: 0 4px 34px rgba(27,26,61,0.16);
+  /* type families */
+  --serif: 'Petrona', 'Source Serif Pro', Georgia, 'Times New Roman', serif;
+  --sans:  'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --mono:  ui-monospace, 'JetBrains Mono', SFMono-Regular, Menlo, Consolas, monospace;
+}
+html.dark {
+  /* CF dark = navy surfaces, never black */
+  --bg: #1B1A3D; --surface: #262552; --surface2: #3A3960;
+  --ink: #FFFFFF; --body: #A3A2B8; --muted: #7C7B9C;
+  --line: #3A3960; --line-soft: #2A2950;
+  --clay: #7BA8FC; --clay-soft: rgba(123,168,252,0.18);
+  --olive: #7BA8FC; --olive-soft: rgba(123,168,252,0.22);
+  --gold: #A2D26B; --blue: #7BA8FC;
+  --zone: rgba(255,255,255,0.03); --zone-line: #3A3960;
+  --shadow-card: 0 4px 34px rgba(0,0,0,0.45);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  background: var(--bg); color: var(--body); font-family: var(--sans);
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  display: flex; flex-direction: column; overflow: hidden;
+}
+
+/* ── top bar ─────────────────────────────── */
+.bar {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  padding: 12px 20px; border-bottom: 1px solid var(--line-soft); flex: none;
+}
+/* brand logo <img> at the far left of the header (inserted by the CF assembly shell step) */
+.brand-logo { height: 30px; width: auto; display: block; flex: none; }
+/* header title — uppercase */
+.bar h1 { font-family: var(--serif); font-weight: 500; font-size: 20px; color: var(--ink); text-transform: uppercase; letter-spacing: 0.02em; }
+.bar .sub { font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.spacer { flex: 1; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+/* flow chips = CF rectangular buttons: Inter, uppercase, no tracking, 4px radius */
+.chip {
+  font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0;
+  text-transform: uppercase;
+  padding: 6px 12px; border: 1px solid var(--line); border-radius: 4px;
+  background: transparent; color: var(--body); cursor: pointer; transition: all .15s ease;
+}
+.chip:hover { color: var(--ink); border-color: var(--muted); }
+.chip.on { background: var(--clay); border-color: var(--clay); color: #FFFFFF; }
+/* tool group — panel + theme, separated from the flow chips */
+.tools { display: flex; align-items: center; gap: 8px; padding-left: 14px; margin-left: 4px; border-left: 1px solid var(--line); }
+#themeToggle, #panelToggle {
+  font-family: var(--sans); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0;
+  padding: 6px 12px; border: 1px solid var(--line); border-radius: 4px;
+  background: transparent; color: var(--body); cursor: pointer;
+}
+#themeToggle:hover, #panelToggle:hover { color: var(--ink); border-color: var(--muted); }
+#panelToggle.on { color: var(--ink); border-color: var(--muted); }
+
+/* ── stage ───────────────────────────────── */
+.stage { flex: 1; position: relative; min-height: 0; }
+.stage svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+/* zones */
+.zone rect { fill: var(--zone); stroke: var(--zone-line); stroke-width: 1; stroke-dasharray: 5 5; rx: 12; }
+.zone .ztitle { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; fill: var(--muted); }
+.zone .zsub { font-family: var(--mono); font-size: 10.5px; fill: var(--muted); opacity: 0.75; }
+
+/* nodes — CF card radius 8px */
+.node { cursor: pointer; }
+.node rect { fill: var(--surface); stroke: var(--line); stroke-width: 1.5; rx: 8; transition: stroke .15s ease, filter .15s ease; }
+.node:hover rect { stroke: var(--muted); }
+.node.sel rect { stroke: var(--clay) !important; stroke-width: 2; }
+.node .t  { font-family: var(--sans); font-size: 14.5px; font-weight: 600; fill: var(--ink); pointer-events: none; }
+.node .m  { font-family: var(--mono); font-size: 11px; fill: var(--muted); pointer-events: none; }
+.node .k  { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; fill: var(--clay); pointer-events: none; }
+.node.gate rect  { fill: var(--clay-soft); stroke: var(--clay); }
+.node.store rect { fill: var(--surface2); }
+.node.do rect    { fill: var(--olive-soft); stroke: var(--clay); }
+.node.edge-n rect{ fill: var(--olive-soft); stroke: var(--clay); }
+.node.ext rect   { stroke-dasharray: 6 3; }
+
+/* edges */
+.edge { stroke: var(--muted); stroke-width: 1.6; fill: none; marker-end: url(#a-mut); transition: opacity .2s ease, stroke .2s ease; }
+.edge.dash { stroke-dasharray: 5 4; }
+.edge.ws { stroke-width: 2; }
+.elbl { font-family: var(--mono); font-size: 10.5px; fill: var(--muted); transition: opacity .2s ease; }
+
+/* flow highlighting — CF blue marching ants */
+.stage.flowing .edge { opacity: 0.13; }
+.stage.flowing .elbl { opacity: 0.13; }
+.stage.flowing .node { opacity: 0.30; }
+.stage.flowing .zone { opacity: 0.45; }
+.stage.flowing .edge.lit {
+  opacity: 1; stroke: var(--clay); marker-end: url(#a-clay);
+  stroke-dasharray: 7 5; animation: march 0.9s linear infinite;
+}
+.stage.flowing .elbl.lit { opacity: 1; fill: var(--clay); }
+.stage.flowing .node.lit { opacity: 1; }
+.stage.flowing .node.lit rect { stroke: var(--clay); }
+@keyframes march { to { stroke-dashoffset: -12; } }
+@media (prefers-reduced-motion: reduce) { .stage.flowing .edge.lit { animation: none; } }
+
+.badge { font-family: var(--mono); font-size: 11px; font-weight: 700; }
+.badge circle { fill: var(--clay); }
+.badge text { fill: #FFFFFF; }
+.stage:not(.flowing) .badge { display: none; }
+
+/* ── floating cards — CF radius 8px + signature shadow ─────── */
+.card {
+  position: absolute; max-width: 360px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+  padding: 14px 16px; box-shadow: var(--shadow-card);
+}
+#detail { right: 16px; bottom: 16px; width: 340px; }
+#detail h3 { font-family: var(--serif); font-weight: 500; font-size: 18px; color: var(--ink); margin-bottom: 2px; }
+#detail .meta { font-family: var(--mono); font-size: 10.5px; color: var(--muted); margin-bottom: 8px; }
+#detail p { font-size: 13px; line-height: 1.55; color: var(--body); }
+#detail p code, #flowcap code { font-family: var(--mono); font-size: 11px; color: var(--clay); }
+#flowcap { left: 16px; bottom: 16px; max-width: 460px; display: none; }
+#flowcap.show { display: block; }
+#flowcap .fname { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--clay); margin-bottom: 6px; }
+#flowcap ol { margin-left: 18px; }
+#flowcap li { font-size: 13px; line-height: 1.55; color: var(--body); }
+.src { position: absolute; top: 10px; right: 16px; font-family: var(--mono); font-size: 10px; color: var(--muted); opacity: 0.8; }
+
+@media (max-width: 880px) {
+  body { overflow: auto; }
+  .stage { min-height: 70vh; }
+  #detail { position: static; width: auto; margin: 10px 16px; }
+  #flowcap { position: static; margin: 0 16px 16px; }
+}

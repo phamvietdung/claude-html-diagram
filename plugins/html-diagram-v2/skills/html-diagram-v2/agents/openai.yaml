@@ -1,0 +1,7 @@
+interface:
+  display_name: "HTML Diagram v2"
+  short_description: "Create effective standalone HTML diagrams (token-efficient)"
+  default_prompt: "Use $html-diagram-v2 to create a polished architecture diagram."
+
+policy:
+  allow_implicit_invocation: false

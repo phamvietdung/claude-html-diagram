@@ -1,0 +1,16 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "html-diagram",
+  "description": "Architecture diagram skill for Claude Code — self-contained, interactive HTML/SVG diagrams.",
+  "owner": {
+    "name": "phamvietdung"
+  },
+  "plugins": [
+    {
+      "name": "html-diagram-v2",
+      "description": "Create a self-contained HTML file visualizing architecture with a full-screen interactive SVG diagram. Token-efficient: one template, no gallery.",
+      "source": "./plugins/html-diagram-v2",
+      "category": "productivity"
+    }
+  ]
+}

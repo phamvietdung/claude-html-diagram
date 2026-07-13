@@ -1,0 +1,9 @@
+{
+  "name": "html-diagram-v2",
+  "description": "Create a self-contained HTML file visualizing architecture with a full-screen interactive SVG diagram. Token-efficient variant — one template, no gallery.",
+  "version": "1.0.0",
+  "author": {
+    "name": "phamvietdung"
+  },
+  "keywords": ["diagram", "architecture", "svg", "html", "visualization"]
+}
