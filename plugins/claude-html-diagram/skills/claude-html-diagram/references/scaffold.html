@@ -34,7 +34,10 @@
 
 <div class="stage" id="stage">
 <!-- Layout tips: nodes ~200×90, gap ≥ 60; size viewBox to content; text baselines
-     ~30px below rect top, .m lines every 18px; curve edges with C, label midway. -->
+     ~30px below rect top, .m lines every 18px; curve edges with C, label midway.
+     Edge endpoints MUST sit on a node border, derived from its rect x,y,w,h — do
+     NOT eyeball: right-mid (x+w, y+h/2) · left-mid (x, y+h/2) · top-mid (x+w/2, y)
+     · bottom-mid (x+w/2, y+h). A few px off puts the arrow tail inside the box. -->
 <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Architecture diagram">
   <defs>
     <marker id="a-mut" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
